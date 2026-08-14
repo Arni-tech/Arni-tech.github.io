@@ -109,6 +109,21 @@
     object-fit:cover;
     display:block;
   }
+  /* Use .card-image.doc for certificates/badges/screenshots — shows the
+     whole document letterboxed instead of cropping it like a photo. */
+  .card-image.doc{
+    aspect-ratio:auto;
+    max-height:360px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px;
+  }
+  .card-image.doc img{
+    width:auto; height:auto;
+    max-width:100%; max-height:336px;
+    object-fit:contain;
+  }
 
   /* ---------- Nav ---------- */
   header.nav{
@@ -1152,7 +1167,7 @@
           <a class="badge-link" href="images/honors/Arnav Negi - Leaders at EAIT Certificate of Completion (1).pdf" target="_blank" rel="noopener">View certificate (PDF) →</a>
         </div>
         <div class="lead-card">
-          <div class="card-image">
+          <div class="card-image doc">
             <img src="images/honors/The University of Queensland - Summer Research Program - 23 Mar 2026.png" alt="Digital badge — UQ Summer Research Program" loading="lazy" onerror="this.parentElement.style.display='none'">
           </div>
           <div class="role">Digital Badge — Summer Research Program</div>
