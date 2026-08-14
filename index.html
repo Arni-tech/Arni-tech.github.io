@@ -96,33 +96,27 @@
     line-height:1.1;
   }
 
-  /* ---------- Card image (reused across timeline / project / leadership / honor cards) ---------- */
+  /* ---------- Card image (reused across timeline / project / leadership / honor cards) ----------
+     Default behaviour: show the WHOLE image, letterboxed on the panel
+     background, never cropped. This matters for headshots, certificates,
+     and badges where cropping cuts off exactly the part that matters.
+     The photo gallery (.gallery-item) overrides this below to crop-to-fill,
+     since a snapshot grid is expected to crop a little. */
   .card-image{
-    aspect-ratio:16/10;
     background:var(--panel-2);
     border:1px solid var(--line);
     overflow:hidden;
     margin-bottom:16px;
-  }
-  .card-image img{
-    width:100%; height:100%;
-    object-fit:cover;
-    display:block;
-  }
-  /* Use .card-image.doc for certificates/badges/screenshots — shows the
-     whole document letterboxed instead of cropping it like a photo. */
-  .card-image.doc{
-    aspect-ratio:auto;
-    max-height:360px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:12px;
+    max-height:380px;
+    min-height:160px;
   }
-  .card-image.doc img{
-    width:auto; height:auto;
-    max-width:100%; max-height:336px;
+  .card-image img{
+    width:100%; height:100%;
     object-fit:contain;
+    display:block;
   }
 
   /* ---------- Nav ---------- */
@@ -679,8 +673,13 @@
   }
   .gallery-item .card-image{
     aspect-ratio:4/5;
+    max-height:none;
+    min-height:0;
     margin-bottom:0;
     border:none;
+  }
+  .gallery-item .card-image img{
+    object-fit:cover;
   }
   .gallery-cap{
     padding:14px 16px;
@@ -1167,7 +1166,7 @@
           <a class="badge-link" href="images/honors/Arnav Negi - Leaders at EAIT Certificate of Completion (1).pdf" target="_blank" rel="noopener">View certificate (PDF) →</a>
         </div>
         <div class="lead-card">
-          <div class="card-image doc">
+          <div class="card-image">
             <img src="images/honors/The University of Queensland - Summer Research Program - 23 Mar 2026.png" alt="Digital badge — UQ Summer Research Program" loading="lazy" onerror="this.parentElement.style.display='none'">
           </div>
           <div class="role">Digital Badge — Summer Research Program</div>
